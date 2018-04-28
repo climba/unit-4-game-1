@@ -39,13 +39,11 @@
         <!-- Controls (Superpower Grow/Shrink)-->
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">Superpowers - Change Sizes!</h3>
+            <h3 class="panel-title">Number to Guess!</h3>
           </div>
           <div class="panel-body">
             <div class="text-center">
-              <button class="btn btn-default btn-lg normal-button"><span class="glyphicon glyphicon-ok-sign"></span> Normal</button>
-              <button class="btn btn-primary btn-lg grow-button"><span class="glyphicon glyphicon-plus-sign"></span> Grow</button>
-              <button class="btn btn-danger btn-lg shrink-button"><span class="glyphicon glyphicon-minus-sign"></span> Shrink</button>
+              <h4>Number to Guess: <span id="number-to-guess"></span></h4>
             </div>
           </div>
         </div>
@@ -58,11 +56,11 @@
               <h3 class="panel-title">Awesome Moments!</h3>
             </div>
             <div class="panel-body">
-              <div class="text-center" id="cap-images">
-                <img class="float-left" src="https://goo.gl/WMGPvn" height="100px" />
-                <img class="float-left" src="https://goo.gl/sWDmLm" height="100px" width="160px" />
-                <img class="float-right" src="https://goo.gl/FK1HMb" height="100px"  />
-                <img class="float-right" src="https://goo.gl/bN2kE5" height="100px" width="160px" />
+              <div class="text-center">
+                <img class="float-left cap-images" src="https://goo.gl/WMGPvn" height="100px" />
+                <img class="float-left cap-images" src="https://goo.gl/sWDmLm" height="100px" width="160px" />
+                <img class="float-right cap-images" src="https://goo.gl/FK1HMb" height="100px"  />
+                <img class="float-right cap-images" src="https://goo.gl/bN2kE5" height="100px" width="160px" />
               </div>
             </div>
           </div>
@@ -87,9 +85,42 @@
         $(".pause-button").on("click", function() {
             audioElement.pause();
         });
+        
+        // Establish a target number
+        var targetNumber = 50;
+
+        // Set the number-to-gess header to match the targetNumber
+        // This allow us to change the HTML to match the value in the javascript
+        $("#number-to-guess").text(targetNumber);
+
+        var counter = 0;
+
+        // Here we select the numbers in numberOptions to start
+        // We set this number at the start of the game
+        var numberOptions = [10, 5, 3, 7];
+        var increment = numberOptions[Math.round(Math.random())];
 
         $(".cap-images").on("click", function() {
-            alert("You clicked a Captain Planet!");
+            // Each time user clicks a Captain the counter goes up by 1
+            counter += increment;
+            // console.log(increment)
+
+            // Output the number of times the Captin has been clicked
+            alert("Your new score is " + counter + "!");
+
+            // Here we created some logic to "check" if the click counter matches the targetNumber.
+            // Remember, this click event will be triggered with each click.
+            // With each click the counter will increase by 10 and be re-evaluated against target.
+            if (counter === targetNumber) {
+
+                // If numbers match we tell the user they won!
+                alert("You win!");
+            }
+            // Added this else if statement to tell the user they lost in the event their counter goes over the target guess
+            else if (counter >= targetNumber) {
+                alert("You loose!!");
+            }
+
         });
 
 
