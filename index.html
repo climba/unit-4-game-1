@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Captain Planet: The Game</title>
+
+  <!-- Bootstrap File -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+
+</head>
+<body>
+
+  <!-- Overall Bootstrap Grid -->
+  <div class="container">
+
+    <!-- Jumbotron with Title -->
+    <div class="jumbotron">
+      <h3 class="text-center"><strong>Captain Planet Collector!!!</strong></h3>
+      <h4 class="text-center">Rated A for Annoying!</h4>
+      <hr>
+    <div class="text-center">  
+        <!-- <img class="float-left" src="https://goo.gl/6mnRiK" height="250px" /> -->
+        <!-- <img class="float-right" src="https://goo.gl/Tdf2xJ" height="250px" /> -->
+    </div>
+    <hr>
+      <div class="text-center">
+        <button class="btn btn-warning btn-xs theme-button"><span class="glyphicon glyphicon-music"></span> Play Theme!</button>
+        <button class="btn btn-default btn-xs pause-button"><span class="glyphicon glyphicon-pause"></span> Pause Song</button>
+      </div>
+
+    </div>
+    <div class="row">
+
+      <!-- Left Panel -->
+      <div class="col-lg-5">
+        <!-- Controls (Superpower Grow/Shrink)-->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Superpowers - Change Sizes!</h3>
+          </div>
+          <div class="panel-body">
+            <div class="text-center">
+              <button class="btn btn-default btn-lg normal-button"><span class="glyphicon glyphicon-ok-sign"></span> Normal</button>
+              <button class="btn btn-primary btn-lg grow-button"><span class="glyphicon glyphicon-plus-sign"></span> Grow</button>
+              <button class="btn btn-danger btn-lg shrink-button"><span class="glyphicon glyphicon-minus-sign"></span> Shrink</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Panel (Captain Planet Hero)-->
+      <div class="col-lg-7">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Awesome Moments!</h3>
+            </div>
+            <div class="panel-body">
+              <div class="text-center" id="cap-images">
+                <img class="float-left" src="https://goo.gl/WMGPvn" height="100px" />
+                <img class="float-left" src="https://goo.gl/sWDmLm" height="100px" width="160px" />
+                <img class="float-right" src="https://goo.gl/FK1HMb" height="100px"  />
+                <img class="float-right" src="https://goo.gl/bN2kE5" height="100px" width="160px" />
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    // JavaScript function that wraps everything
+    $(document).ready(function() {
+
+        // Get links for playing music
+        var audioElement = document.createElement("audio");
+        audioElement.setAttribute("src", "assets/captainplanet24.mp3");        
+
+        // theme button
+        $(".theme-button").on("click", function() {
+            audioElement.play();
+        })
+
+        $(".pause-button").on("click", function() {
+            audioElement.pause();
+        });
+
+        $(".cap-images").on("click", function() {
+            alert("You clicked a Captain Planet!");
+        });
+
+
+    });
+
+  </script>
+
+</body>
+</html>
